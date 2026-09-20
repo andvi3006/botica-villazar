@@ -83,26 +83,21 @@
       cursor: pointer;
     }
     
-     /* Agrega esto debajo o dentro de los estilos de .logo */
     .logo {
       display: flex;
       align-items: center;
       cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-morado);
+      white-space: nowrap;
     }
 
     .logo-img {
-      height: 40px;          /* Ajusta la altura máxima del logo según prefieras */
-      max-width: 200px;      /* Ancho máximo permitido */
-      width: auto;           /* Mantiene la proporción de la imagen */
-      object-fit: contain;   /* Evita que la imagen se distorsione */
-    }
- /* ------------------------------------------------------------------------ */
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      cursor: pointer;
-      color: var(--primary-morado);
-      white-space: nowrap;
+      height: 40px;
+      max-width: 200px;
+      width: auto;
+      object-fit: contain;
     }
 
     .marca-andvi { color: #00b4d8; }
@@ -658,18 +653,147 @@
     .brand-banner-box:hover img { transform: scale(1.08); }
 
     .brand-overlay-text {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(250, 248, 248);
+        font-size: 1.5rem; /* CAMBIADO: Tamaño reducido de 1.8rem a 1rem */
+        font-weight: 800;
+        padding: 0 1rem !important; /* CAMBIADO: Reducido a 1rem para dar más espacio útil en móviles pequeños */
+        text-align: center; /* AGREGADO: Centra el texto de varias líneas */
+        line-height: 1.2; /* AGREGADO: Junta un poco las líneas cuando se divide en dos */
+        letter-spacing: 1px; /* OPCIONAL: Ligera reducción para que quepa mejor */
+        text-transform: uppercase;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    
+    /* ESTILOS PARA SECCIÓN CALL CENTER PEDIDO DE MEDICAMENTOS */
+    .callcenter-banner-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(30, 27, 75, 0.08);
+      padding: 2.5rem;
       display: flex;
+      flex-direction: row;
       align-items: center;
-      justify-content: center;
-      color: white;
+      gap: 2.5rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f4f0ff 100%);
+    }
+
+    .callcenter-img-box {
+            flex: 1;
+            max-width: 700px;
+            height: 500px; /* <--- AGREGAR una altura fija para evitar espacio vertical restante */
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+    .callcenter-img-box img {
+            width: 100%;
+            height: 100%; /* <--- CAMBIAR 'height: auto' POR '100%' */
+            display: block;
+            object-fit: cover; /* Asegura el rellenado completo */
+        }
+
+    .callcenter-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .callcenter-badge {
+      background: rgba(34, 197, 94, 0.12);
+      color: #15803d;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .callcenter-title {
       font-size: 1.8rem;
       font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      color: var(--text-main);
+      margin-bottom: 0.8rem;
+      line-height: 1.25;
+    }
+
+    .callcenter-desc {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .callcenter-features {
+      list-style: none;
+      margin-bottom: 1.8rem;
+      width: 100%;
+    }
+
+    .callcenter-features li {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .callcenter-features li i {
+      color: var(--primary-morado);
+      font-size: 1.1rem;
+    }
+
+    .btn-whatsapp-callcenter {
+      background: #25d366;
+      color: white;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-whatsapp-callcenter:hover {
+      background: #1da851;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+      color: white;
+    }
+
+    @media (max-width: 850px) {
+      .callcenter-banner-card {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+      .callcenter-img-box {
+        max-width: 100%;
+      }
+      .callcenter-title {
+        font-size: 1.4rem;
+      }
     }
 
     /* PRODUCTOS Y CATALOGO */
@@ -983,12 +1107,13 @@
       justify-content: center;
     }
 
+    /* BUSCAR ESTA REGLA Y CAMBIAR A ESTOS VALORES */
     .detail-info-container h1 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin: 0.3rem 0 0.6rem;
-      line-height: 1.25;
+    font-size: 1.15rem; /* <-- Cambia esta línea (estaba en 1.35rem o 1.6rem) */
+    font-weight: 700;
+    color: #2e1065;
+    margin: 0.3rem 0 0.6rem;
+    line-height: 1.3;
     }
 
     .features-summary-box {
@@ -1043,13 +1168,16 @@
       margin-top: 0.5rem;
     }
 
-    .product-detail-bottom-desc h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--primary-morado);
-      margin-bottom: 0.8rem;
+   .product-detail-bottom-desc h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2e1065; /* Morado oscuro estético */
+    margin-bottom: 0.8rem;
     }
-
+    
+    .product-detail-bottom-desc h3 {
+    color: #2e1065 !important; /* Morado oscuro estético */
+    }
     .product-detail-bottom-desc p {
       color: var(--text-muted);
       line-height: 1.7;
@@ -1117,54 +1245,59 @@
       margin-top: 1.2rem;
     }
 
+  /* ESTILO DEL BOTÓN AGREGAR EN VISTA DETALLE (DESKTOP) */
     .detail-actions-row .add-btn {
-      padding: 0.8rem 1.8rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 50px;
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 50px;
+        background: #79058b; /* Azul vibrante de alto contraste */
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(228, 7, 209, 0.4); /* Sombra de realce */
+        border: none;
     }
 
+    .detail-actions-row .add-btn:hover {
+    background: #092596;
+    }
+
+    
     /* SECCIONES RECOMENDACIONES Y OFERTAS */
     .detail-suggestions-section, .detail-offers-section {
       margin-top: 1.8rem;
       padding-top: 0.5rem;
     }
 
-/* ==========================================
-   AJUSTE DE OTROS PRODUCTOS EN OFERTA (SCROLL HORIZONTAL)
-   ========================================== */
     .horizontal-scroll-container {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    padding: 10px 4px 18px 4px;
-    scroll-behavior: smooth;
-    align-items: stretch; /* Mantiene todas las tarjetas con la misma altura */
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 10px 4px 18px 4px;
+      scroll-behavior: smooth;
+      align-items: stretch;
     }
 
-    /* Forzar que las tarjetas de la sección de ofertas tengan dimensiones uniformes */
     .horizontal-scroll-container .card {
-    min-width: 220px;
-    max-width: 240px;
-    width: 230px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
+      min-width: 220px;
+      max-width: 240px;
+      width: 230px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Fijar la altura de la caja de la imagen para que no salgan chatas */
     .horizontal-scroll-container .card .card-img {
-    height: 200px !important; /* Altura adecuada para ver bien el producto */
-    width: 100%;
+      height: 200px !important;
+      width: 100%;
     }
 
-    /* Evitar que las imágenes salgan recortadas drásticamente */
     .horizontal-scroll-container .card .card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain !important; /* Cambia a 'contain' para mostrar la imagen completa sin recortar */
-    background-color: #fafafa;
+      width: 100%;
+      height: 100%;
+      object-fit: contain !important;
+      background-color: #fafafa;
     }
+
     /* CARRITO SIDEBAR */
     .cart-sidebar {
       position: fixed; 
@@ -1272,7 +1405,6 @@
     #toast.show { transform: translateX(-50%) translateY(0); }
 
     /* RESPONSIVE MÓVIL */
-/* RESPONSIVE MÓVIL */
     @media (max-width: 900px) {
       .top-nav-bar { display: none; } 
       .mobile-menu-btn { display: block; }
@@ -1296,28 +1428,15 @@
         padding: 0.8rem 1rem;
       }
 
-      /* === AJUSTE PARA MOSTRAR 4 TARJETAS EN PANTALLA (2x2) EN CELULAR === */
       .main-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px !important;
       }
 
-      .card {
-        border-radius: 12px;
-      }
-
-      .card-img {
-        height: 125px !important; /* Altura de imagen optimizada para celular */
-      }
-
-      .card-body {
-        padding: 0.6rem;
-      }
-
-      .card-cat {
-        font-size: 0.65rem;
-      }
-
+      .card { border-radius: 12px; }
+      .card-img { height: 125px !important; }
+      .card-body { padding: 0.6rem; }
+      .card-cat { font-size: 0.65rem; }
       .card-name {
         font-size: 0.82rem;
         line-height: 1.2;
@@ -1327,20 +1446,9 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
-
-      .price, .price-sale {
-        font-size: 0.95rem;
-      }
-
-      .price-old-crossed {
-        font-size: 0.68rem;
-      }
-
-      .add-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.72rem;
-      }
-
+      .price, .price-sale { font-size: 0.95rem; }
+      .price-old-crossed { font-size: 0.68rem; }
+      .add-btn { padding: 0.35rem 0.6rem; font-size: 0.72rem; }
       .card-badge.discount, .card-badge.badge-24h {
         font-size: 0.65rem;
         padding: 2px 6px;
@@ -1405,10 +1513,7 @@
       padding: 1.5rem;
     }
 
-    .image-modal-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
+    .image-modal-overlay.open { opacity: 1; visibility: visible; }
 
     .image-modal-content {
       position: relative;
@@ -1421,9 +1526,7 @@
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .image-modal-overlay.open .image-modal-content {
-      transform: scale(1);
-    }
+    .image-modal-overlay.open .image-modal-content { transform: scale(1); }
 
     .image-modal-content img {
       max-width: 100%;
@@ -1471,8 +1574,8 @@
           <i class="ri-menu-line"></i>
         </button>
         <div class="logo" onclick="window.location.reload()">
-            <img src="botica.jpg" alt="MULTIGAMAC" class="logo-img">
-            </div>
+          <img src="botica.jpg" alt="MULTIGAMAC" class="logo-img">
+        </div>
       </div>
       
       <div class="search-wrap">
@@ -1500,9 +1603,7 @@
     <div class="mobile-sidebar-body" id="mobile-sidebar-content"></div>
   </aside>
 
-  <!-- ==========================================
-       VISTA 1: CATÁLOGO Y PROMO
-       ========================================== -->
+  <!-- VISTA 1: CATÁLOGO Y PROMO -->
   <div id="catalog-full-view">
     <section class="carousel-section">
       <div class="carousel-container" id="carousel-container">
@@ -1513,8 +1614,8 @@
           <div class="carousel-overlay">
             <span class="carousel-tag">LINEA DIABETICA</span>
             <h2 class="carousel-title">Tu bienestar y tu glucosa en equilibrio</h2>
-            <p class="carousel-desc">Explora nuestra línea de productos especializados para personas con diabetes,pensados exclusivamente en cubrir las necesidades de tu día a día</p>
-            <button class="carousel-btn" onclick="filterByPromo('vitaminas y suplementos')">Ver Promociones</button>
+            <p class="carousel-desc">Explora nuestra línea de productos especializados para personas con diabetes, pensados exclusivamente en cubrir las necesidades de tu día a día.</p>
+            <button class="carousel-btn" onclick="filterByPromo('productos para diabeticos')">Ver Promociones</button>
           </div>
         </div>
 
@@ -1524,7 +1625,7 @@
           <div class="carousel-overlay">
             <span class="carousel-tag">OFERTAS IMPERDIBLES</span>
             <h2 class="carousel-title">Muévete Sin Dolor</h2>
-            <p class="carousel-desc">Has 10% de Descuento en Productos para aliviar el dolor MUscular y Articular </p>
+            <p class="carousel-desc">Hasta 10% de Descuento en Productos para aliviar el dolor Muscular y Articular.</p>
             <button class="carousel-btn" onclick="filterByPromo('Dolor Muscular y Articular')">Comprar Ahora</button>
           </div>
         </div>
@@ -1596,24 +1697,22 @@
           <img src="mcep.jpg" alt="Promo 3">
           <div class="promo-card-content">
             <span class="promo-card-badge">¡Cuida tu sonrisa!</span>
-            <div class="promo-card-title">línea de cuidado bucal</div>
+            <div class="promo-card-title">Línea de cuidado bucal</div>
             <div class="promo-card-sub">¡No te lo pierdas! Los mejores productos para tu rutina diaria.</div>
           </div>
         </div>
       </div>
 
       <div class="brand-banners-container">
-        <div class="brand-banner-box" onclick="filterByPromo('EUCERIN')">
-          <img src="magistral.png" alt="Eucerin">
+        <div class="brand-banner-box" onclick="filterByPromo('preparados magistrales')">
+          <img src="magistral.png" alt="Preparados Magistrales">
           <div class="brand-overlay-text">PREPARADOS MAGISTRALES</div>
         </div>
 
-        <div class="brand-banner-box" onclick="filterByPromo('ASEPXIA')">
-          <img src="medi.avif" alt="Brand 2">
+        <div class="brand-banner-box" onclick="filterByPromo('pedido de medicamentos')">
+          <img src="medi.avif" alt="Pedido de Medicamentos">
           <div class="brand-overlay-text">pedido de medicamentos</div>
         </div>
-
-        
       </div>
     </section>
 
@@ -1622,11 +1721,69 @@
       <div class="section-banner-header catalog-header">
         <div class="section-banner-title">
           <i class="ri-store-3-line"></i>
-          <span>Catálogo de Productos</span>
+          <span id="catalog-main-title">Catálogo de Productos</span>
         </div>
         <span class="section-subtitle-badge" id="catalog-subtitle">• Selección Exclusiva</span>
       </div>
-      
+
+      <div id="callcenter-section" style="display: none;">
+        <div class="callcenter-banner-card">
+          <div class="callcenter-img-box">
+            <img src="Medicines_share.jpg" alt="Pedido de Medicamentos por WhatsApp">
+          </div>
+          <div class="callcenter-content">
+            <div class="callcenter-badge">
+              <i class="ri-shield-check-fill"></i> Atención Profesional Garantizada
+            </div>
+            <h2 class="callcenter-title">Atención Personalizada y Pedidos de Medicamentos</h2>
+            <p class="callcenter-desc">
+              Somos farmacéuticos profesionales dedicados a brindarte asesoría experta. Envíanos tu receta o consulta sobre medicamentos con total confianza; nuestro equipo Call Center te atenderá directamente.
+            </p>
+            <ul class="callcenter-features">
+              <li><i class="ri-checkbox-circle-fill"></i> Asesoramiento farmacéutico personalizado</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Envío directo de recetas médicas por foto</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Gestión de pedidos rápida, segura y confidencial</li>
+            </ul>
+            <a href="https://api.whatsapp.com/send?phone=51929300632&text=¡Hola!%20👋%20Necesito%20ayuda%20con%20mi%20receta%20médica%20📄.%20Me%20gustaría%20cotizar%20los%20medicamentos%20💊%20y%20consultar%20disponibilidad.%20¡Quedo%20atento(a)!" target="_blank" class="btn-whatsapp-callcenter">
+                Consultar Receta por WhatsApp
+            </a>
+                    <br>
+            <a href="https://api.whatsapp.com/send?phone=51929300632&text=¡Hola!%20👋%20Necesito%20atención%20personalizada.%20Me%20gustaría%20consultar%20sobre%20productos%20de%20tocador%20🧼,%20higiene%20🧻%20o%20medicamentos%20💊.%20¡Quedo%20atento(a)!" target="_blank" class="btn-whatsapp-callcenter">
+            Atención Personalizada por WhatsApp
+            </a>
+                
+          </div>
+        </div>
+      </div>
+    
+      <div id="magistrales-section" style="display: none;">
+        <div class="callcenter-banner-card">
+            <div class="callcenter-img-box">
+            <img src="prep.jpg" alt="Preparados Magistrales">
+            </div>
+            <div class="callcenter-content">
+            <div class="callcenter-badge">
+                <i class="ri-flask-line"></i> Formulación Personalizada
+            </div>
+            <h2 class="callcenter-title">Elaboración experta de preparados magistrales</h2>
+            <p class="callcenter-desc">
+                Elaboramos fórmulas medicamentosas y dermocosméticas adaptadas a tus necesidades específicas. Medicamentos preparados bajo estándares rigurosos y recetas médicas personalizadas.
+            </p>
+            <ul class="callcenter-features">
+                <li><i class="ri-checkbox-circle-fill"></i> Elaboración dermatológica y médica a medida</li>
+                <li><i class="ri-checkbox-circle-fill"></i> Ingredientes de alta pureza y calidad farmacéutica</li>
+                <li><i class="ri-checkbox-circle-fill"></i> Asesoría profesional sobre el uso correcto del preparado</li>
+            </ul>
+           <a href="https://api.whatsapp.com/send?phone=51907242842&text=¡Hola!%20👋%20Tengo%20una%20receta%20médica%20📄%20para%20un%20preparado%20magistral%20🧪.%20Me%20gustaría%20cotizarlo%20y%20saber%20el%20tiempo%20de%20elaboración.%20¡Quedo%20atento(a)!" target="_blank" class="btn-whatsapp-callcenter">
+            Preparado Magistral con Receta
+            </a>
+            <br>
+            <a href="https://api.whatsapp.com/send?phone=51907242842&text=¡Hola!%20👋%20Deseo%20consultar%20sobre%20la%20elaboración%20de%20un%20preparado%20magistral%20personalizado%20🧪.%20Quisiera%20asesoría%20según%20mi%20necesidad.%20¡Quedo%20atento(a)!" target="_blank" class="btn-whatsapp-callcenter">
+            Preparado Magistral Personalizado
+            </a>
+            </div>
+        </div>
+      </div>
       <div class="empty-state" id="empty-state">
         <div class="icon">🔍</div>
         <h3>No encontramos resultados</h3>
@@ -1637,9 +1794,7 @@
     </main>
   </div>
 
-  <!-- ==========================================
-       VISTA 2: DETALLE DEL PRODUCTO
-       ========================================== -->
+  <!-- VISTA 2: DETALLE DEL PRODUCTO -->
   <div id="product-detail-view" style="display: none;">
     <div class="product-detail-section">
       <button class="back-to-catalog-btn" onclick="showCatalogView()">
@@ -1647,9 +1802,7 @@
       </button>
 
       <div class="product-detail-card">
-        <!-- SECCIÓN SUPERIOR -->
         <div class="product-detail-top">
-          <!-- CARRUSEL DE IMÁGENES -->
           <div class="product-carousel" id="detail-carousel-container">
             <div id="detail-discount-badge-box"></div>
             <div id="detail-24h-badge-box"></div>
@@ -1659,9 +1812,7 @@
             <button class="prod-carousel-btn next" onclick="moveProdSlide(1)"><i class="ri-arrow-right-s-line"></i></button>
           </div>
 
-          <!-- DATOS Y BOTONES DE COMPRA -->
           <div class="detail-info-container">
-            <!-- 1. INSIGNIA PRODUCTO DISPONIBLE -->
             <div class="detail-availability-badge">
               <i class="ri-checkbox-circle-fill"></i> Producto Disponible
             </div>
@@ -1669,19 +1820,14 @@
             <span class="card-cat" id="detail-cat"></span>
             <h1 id="detail-name"></h1>
             
-            <!-- 2. PRECIO REGULAR Y PRECIO OFERTA -->
             <div class="detail-price-box" id="detail-price-block"></div>
-
-            <!-- 3. CARACTERÍSTICAS Y VER MÁS -->
             <div id="detail-features-summary-box" class="features-summary-box"></div>
 
-            <!-- 4. VENDIDO Y DESPACHADO POR BOTICA VILLAZAR -->
             <div class="seller-info-box">
               <i class="ri-shield-check-fill"></i>
               <span>Vendido y despachado por <strong>Botica Villazar</strong></span>
             </div>
 
-            <!-- 5. MÉTODOS DE ENTREGA -->
             <div class="shipping-methods-container">
               <div class="shipping-methods-title">
                 <i class="ri-truck-line"></i> Métodos de entrega:
@@ -1696,21 +1842,18 @@
               </div>
             </div>
 
-            <!-- 6. BOTÓN AGREGAR AL CARRITO -->
             <div class="detail-actions-row">
               <div id="detail-action-block" style="flex: 1;"></div>
             </div>
           </div>
         </div>
 
-        <!-- SECCIÓN INFERIOR: DESCRIPCIÓN LARGA -->
         <div class="product-detail-bottom-desc" id="product-detail-bottom-desc">
           <h2>Descripción del Producto</h2>
           <div id="detail-desc-block"></div>
         </div>
       </div>
 
-      <!-- PRODUCTOS SIMILARES RECOMENDADOS -->
       <section class="detail-suggestions-section">
         <div class="section-banner-header">
           <div class="section-banner-title">
@@ -1722,7 +1865,6 @@
         <div class="main-grid" id="suggested-products-grid"></div>
       </section>
 
-      <!-- OTROS PRODUCTOS EN OFERTA -->
       <section class="detail-offers-section">
         <div class="section-banner-header" style="border-left-color: #ef4444; background: linear-gradient(135deg, #ffffff 0%, #fff0f0 100%);">
           <div class="section-banner-title">
@@ -1760,7 +1902,6 @@
         <span id="cart-total">S/ 0.00</span>
       </div>
       
-      <!-- FORMULARIO DE CHECKOUT -->
       <div id="checkout-form-container" style="margin-top: 1.2rem; padding: 1.2rem 1rem; border-top: 2px dashed #cbd5e1; background: #fafafa; border-radius: 10px; display: none; text-align: left;">
         <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem; color: #7209b7; display: flex; align-items: center; gap: 6px;">
           <i class="ri-shopping-bag-3-line"></i> Datos de Entrega
@@ -1897,7 +2038,36 @@
     let autoPlayInterval = null;
 
     window.onload = function() {
-      initStore();
+        initStore();
+        
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.view === 'detail' && event.state.productId) {
+            showProductDetailView(event.state.productId, true);
+            } else {
+            showCatalogView(true);
+            }
+        });
+
+        document.getElementById('search').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            showCatalogView();
+            
+            const callcenterSec = document.getElementById('callcenter-section');
+            if (callcenterSec) callcenterSec.style.display = 'none';
+
+            if (!query) {
+            renderProducts(products);
+            return;
+            }
+
+            const filtered = products.filter(p => 
+            (p.name && p.name.toLowerCase().includes(query)) ||
+            (p.cat && p.cat.toLowerCase().includes(query)) ||
+            (p.desc && p.desc.toLowerCase().includes(query))
+            );
+
+            renderProducts(filtered);
+        });
     };
 
     async function initStore() {
@@ -1905,6 +2075,52 @@
       await loadProductsFromSupabase();
       updateCartUI();
       startCarouselAutoPlay();
+    }
+
+    async function loadProductsFromSupabase() {
+        const { data, error } = await supabaseClient
+            .from('products')
+            .select('*')
+            .order('id', { ascending: false });
+
+        if (error) {
+            console.error("Error al cargar productos:", error);
+            return;
+        }
+
+        products = data.map(p => ({
+            id: p.id,
+            name: p.name || p.title,
+            price: Number(p.price) || 0,
+            oldPrice: p.old_price ? Number(p.old_price) : null,
+            cat: p.category || 'General',
+            desc: p.description || '',
+            img: p.image_url || p.image || 'https://via.placeholder.com/300',
+            images: p.images || [],
+            is_24h: p.is_24h || false,
+            bloqueado: !p.is_active || false,
+            benefits: p.benefits || []
+        }));
+
+        renderProducts(products);
+    }
+
+    function renderProducts(items) {
+      const grid = document.getElementById('products-grid');
+      const emptyState = document.getElementById('empty-state');
+      
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        emptyState.classList.add('show');
+        return;
+      }
+
+      emptyState.classList.remove('show');
+
+      items.forEach(p => {
+        grid.appendChild(createProductCardElement(p));
+      });
     }
 
     function toggleMobileSidebar() {
@@ -1983,14 +2199,16 @@
       }
     }
 
-    function showProductDetailView(id) {
+    function showProductDetailView(id, isBackNavigation = false) {
         const p = products.find(prod => prod.id === id);
         if (!p) return;
 
         activeProductId = p.id;
-        history.pushState({ view: 'detail', productId: id }, '', `#producto-${id}`);
+        
+        if (!isBackNavigation) {
+            history.pushState({ view: 'detail', productId: id }, '', `#producto-${id}`);
+        }
 
-        // Cargar imágenes en el carrusel
         const imagesList = (p.images && p.images.length > 0) ? p.images : [p.img];
         const slidesWrapper = document.getElementById('product-slides-wrapper');
         slidesWrapper.innerHTML = '';
@@ -2004,7 +2222,6 @@
 
         currentProdSlideIdx = 0;
 
-        // Badges
         const discountBox = document.getElementById('detail-discount-badge-box');
         discountBox.innerHTML = p.oldPrice 
             ? `<span class="card-badge discount" style="position:absolute; top:15px; left:15px; font-size:0.85rem; padding:6px 12px; z-index:10;">-${Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100)}%</span>` 
@@ -2018,29 +2235,8 @@
         document.getElementById('detail-cat').innerText = p.cat;
         document.getElementById('detail-name').innerText = p.name;
 
-        // PRECIOS CON O SIN OFERTA
         const priceBlock = document.getElementById('detail-price-block');
-        if (p.oldPrice) {
-            priceBlock.innerHTML = `
-            <div class="detail-price-row">
-                <span class="price-label-regular">Precio regular:</span>
-                <span class="detail-price-old">S/ ${p.oldPrice.toFixed(2)}</span>
-            </div>
-            <div class="detail-price-row">
-                <span class="price-label-oferta">Precio oferta:</span>
-                <span class="detail-price-sale">S/ ${p.price.toFixed(2)}</span>
-            </div>
-            `;
-        } else {
-            priceBlock.innerHTML = `
-            <div class="detail-price-row">
-                <span class="price-label-regular">Precio regular:</span>
-                <span class="detail-price-main">S/ ${p.price.toFixed(2)}</span>
-            </div>
-            `;
-        }
         
-        // Crear el aviso con los colores y texto personalizados
         const avisoCentralHTML = p.is_24h ? `
             <style>
                 @keyframes fadeInSlide {
@@ -2113,7 +2309,6 @@
             </div>
         ` : '';
 
-        // Renderizar según si tiene precio de oferta o no:
         if (p.oldPrice) {
             priceBlock.innerHTML = `
             <div class="detail-price-row">
@@ -2136,7 +2331,6 @@
             `;
         }
 
-        // Resumen de características
         const summaryBox = document.getElementById('detail-features-summary-box');
         let summaryContent = '';
 
@@ -2161,8 +2355,6 @@
         }
         summaryBox.innerHTML = summaryContent;
 
-        let badge24hDetail = p.is_24h ? `<p style="margin-top:0.8rem; margin-bottom:1.5rem; color:#7209b7; font-weight:700; font-size:0.9rem;"><i class="ri-flashlight-fill"></i> Entrega o Recojo express en 24 Horas</p>` : '';
-
         let benefitsSection = '';
         if (p.benefits && p.benefits.length > 0) {
             benefitsSection = `
@@ -2172,15 +2364,14 @@
                 </h3>
                 <ul style="margin-top: 0.5rem;">
                 ${p.benefits.map(b => {
-                    const formattedBenefit = b.replace(/^([^:]+):/, '<strong style="color: var(--primary-morado);">$1:</strong>');
-                    return `<li>${formattedBenefit}</li>`;
+                    const formattedBenefit = b.replace(/^([^:]+):/, '<strong style="color: #2e1065;">$1:</strong>');
+                    return `<li style="color: #2e1065;">${formattedBenefit}</li>`;
                 }).join('')}
                 </ul>
             </div>
             `;
         }
 
-       // Elimina la variable o déjala vacía para que no aparezca abajo
         document.getElementById('detail-desc-block').innerHTML = `
             <div class="description-text">
             <p>${p.desc}</p>
@@ -2344,32 +2535,53 @@
         updateCartUI();
     }
 
+    /* FILTROS Y MANEJO DEL CALL CENTER */
+    function filterByCategory(categoryName) {
+        showCatalogView();
+        const subtitleEl = document.getElementById('catalog-subtitle');
+        const titleEl = document.getElementById('catalog-main-title');
+        const callcenterSec = document.getElementById('callcenter-section');
+        const magistralesSec = document.getElementById('magistrales-section');
+
+        const catLower = categoryName.toLowerCase().trim();
+
+        if (callcenterSec) callcenterSec.style.display = 'none';
+        if (magistralesSec) magistralesSec.style.display = 'none';
+
+        if (catLower === 'pedido de medicamentos') {
+            if (callcenterSec) callcenterSec.style.display = 'block';
+            if (titleEl) titleEl.innerText = "Call Center - Pedido de Medicamentos";
+            if (subtitleEl) subtitleEl.innerText = "• Atención Farmacéutica Profesional";
+            renderProducts([]);
+        } else if (catLower === 'preparados magistrales') {
+            if (magistralesSec) magistralesSec.style.display = 'block';
+            if (titleEl) titleEl.innerText = "Nuestros Preparados Magistrales";
+            if (subtitleEl) subtitleEl.innerText = "• Fórmulas Personalizadas";
+            
+            const filtered = products.filter(p => p.cat && p.cat.toLowerCase() === catLower);
+            renderProducts(filtered);
+        } else {
+            if (titleEl) titleEl.innerText = "Catálogo de Productos";
+            
+            if (categoryName === 'todos') {
+            renderProducts(products);
+            if (subtitleEl) subtitleEl.innerText = "• Selección Exclusiva";
+            } else if (categoryName === 'ofertas') {
+            const filtered = products.filter(p => p.oldPrice);
+            renderProducts(filtered);
+            if (subtitleEl) subtitleEl.innerText = "• Promociones y Ofertas";
+            } else {
+            const filtered = products.filter(p => p.cat && p.cat.toLowerCase() === catLower);
+            renderProducts(filtered);
+            if (subtitleEl) subtitleEl.innerText = `• Categoría: "${categoryName.toUpperCase()}"`;
+            }
+        }
+
+        document.getElementById('store-wrapper').scrollIntoView({ behavior: 'smooth' });
+    }
+    
     function filterByPromo(term) {
-      showCatalogView();
-      const targetTerm = term.toLowerCase().trim();
-      const subtitleEl = document.getElementById('catalog-subtitle');
-
-      const filtersContainer = document.getElementById('filters');
-      if (filtersContainer) {
-        filtersContainer.querySelectorAll('.filter-chip, .nav-item').forEach(btn => btn.classList.remove('active'));
-      }
-
-      if (targetTerm === 'ofertas') {
-        const filtered = products.filter(p => p.oldPrice);
-        renderProducts(filtered);
-        if (subtitleEl) subtitleEl.innerText = "• Promociones y Ofertas";
-      } else {
-        const filtered = products.filter(p => 
-          (p.cat && p.cat.toLowerCase().includes(targetTerm)) ||
-          (p.name && p.name.toLowerCase().includes(targetTerm)) ||
-          (p.desc && p.desc.toLowerCase().includes(targetTerm)) ||
-          (p.brand && p.brand.toLowerCase().includes(targetTerm))
-        );
-        renderProducts(filtered);
-        if (subtitleEl) subtitleEl.innerText = `• Filtro: "${term.toUpperCase()}"`;
-      }
-
-      document.getElementById('store-wrapper').scrollIntoView({ behavior: 'smooth' });
+      filterByCategory(term);
     }
 
     async function loadCategoriesFromSupabase() {
@@ -2391,10 +2603,10 @@
     function renderNavMenu(categories) {
       const container = document.getElementById('filters');
       container.innerHTML = `
-        <button class="nav-item active" data-cat="todos">
+        <button class="nav-item active" onclick="filterByCategory('todos')">
           <i class="ri-grid-fill"></i> Todos
         </button>
-        <button class="nav-item btn-oferta-top" data-cat="ofertas">
+        <button class="nav-item btn-oferta-top" onclick="filterByCategory('ofertas')">
           <i class="ri-fire-fill"></i> Ofertas
         </button>
       `;
@@ -2412,37 +2624,35 @@
 
         const chipsHTML = grouped[groupName].map(c => {
           const iconContent = c.image 
-            ? `<img src="${c.image}" alt="" style="width:22px; height:22px; border-radius:50%; object-fit:cover;">`
-            : `<i class="${getCategoryIcon(c.name)}" style="font-size: 1.2rem; color: var(--primary-morado);"></i>`;
-
-          return `<button class="filter-chip" data-cat="${c.name}">
-                    ${iconContent} ${c.name}
-                  </button>`;
+            ? `<img src="${c.image}" alt="${c.name}">`
+            : `<i class="${getCategoryIcon(c.name)}"></i>`;
+          return `
+            <button class="filter-chip" onclick="filterByCategory('${c.name}')">
+              ${iconContent} <span>${c.name}</span>
+            </button>
+          `;
         }).join('');
 
         dropdownDiv.innerHTML = `
-          <button class="nav-item dropdown-trigger">
-            <i class="ri-capsule-line"></i> ${groupName} <i class="ri-arrow-down-s-line arrow"></i>
+          <button class="nav-item">
+            <i class="${getCategoryIcon(groupName)}"></i> ${groupName} <i class="ri-arrow-down-s-line"></i>
           </button>
           <div class="dropdown-menu-content">
             ${chipsHTML}
           </div>
         `;
-
         container.appendChild(dropdownDiv);
       });
-
-      setupFilters();
     }
 
     function renderMobileSidebarMenu(categories) {
       const container = document.getElementById('mobile-sidebar-content');
-      let html = `
-        <button class="mobile-cat-item" onclick="filterMobileCategory('todos')">
-          <span><i class="ri-grid-fill"></i> Todos</span>
+      container.innerHTML = `
+        <button class="mobile-cat-item" onclick="filterByCategory('todos'); toggleMobileSidebar();">
+          <span><i class="ri-grid-fill"></i> Todos los Productos</span>
         </button>
-        <button class="mobile-cat-item" style="color:#ef4444;" onclick="filterMobileCategory('ofertas')">
-          <span><i class="ri-fire-fill"></i> Ofertas</span>
+        <button class="mobile-cat-item" style="color: #ef4444;" onclick="filterByCategory('ofertas'); toggleMobileSidebar();">
+          <span><i class="ri-fire-fill"></i> Promociones Exclusivas</span>
         </button>
       `;
 
@@ -2453,318 +2663,176 @@
         return acc;
       }, {});
 
-      let idx = 0;
-      Object.keys(grouped).forEach(groupName => {
-        idx++;
-        const subId = `mob-sub-${idx}`;
-        const subHTML = grouped[groupName].map(c => {
+      Object.keys(grouped).forEach((groupName, idx) => {
+        const subId = `mobile-sub-${idx}`;
+        const subItemsHTML = grouped[groupName].map(c => {
           const iconContent = c.image 
-            ? `<img src="${c.image}" alt="" style="width:20px; height:20px; border-radius:50%; object-fit:cover;">`
-            : `<i class="${getCategoryIcon(c.name)}" style="font-size: 1.1rem; color: var(--primary-morado);"></i>`;
-
-          return `<button class="mobile-subcat-btn" onclick="filterMobileCategory('${c.name}')">
-                    ${iconContent} ${c.name}
-                  </button>`;
+            ? `<img src="${c.image}" alt="${c.name}">`
+            : `<i class="${getCategoryIcon(c.name)}"></i>`;
+          return `
+            <button class="mobile-subcat-btn" onclick="filterByCategory('${c.name}'); toggleMobileSidebar();">
+              ${iconContent} <span>${c.name}</span>
+            </button>
+          `;
         }).join('');
 
-        html += `
-          <div>
-            <button class="mobile-cat-item" onclick="toggleSubcats('${subId}')">
-              <span>${groupName}</span>
-              <i class="ri-arrow-down-s-line"></i>
-            </button>
-            <div class="mobile-subcats" id="${subId}">
-              ${subHTML}
-            </div>
+        const groupDiv = document.createElement('div');
+        groupDiv.innerHTML = `
+          <button class="mobile-cat-item" onclick="toggleSubcats('${subId}')">
+            <span><i class="${getCategoryIcon(groupName)}"></i> ${groupName}</span>
+            <i class="ri-arrow-down-s-line"></i>
+          </button>
+          <div class="mobile-subcats" id="${subId}">
+            ${subItemsHTML}
           </div>
         `;
-      });
-
-      container.innerHTML = html;
-    }
-
-    function filterMobileCategory(cat) {
-      showCatalogView();
-      toggleMobileSidebar();
-      const subtitleEl = document.getElementById('catalog-subtitle');
-      if (cat === 'todos') {
-        renderProducts(products);
-        if (subtitleEl) subtitleEl.innerText = "• Selección Exclusiva";
-      } else if (cat === 'ofertas') {
-        renderProducts(products.filter(p => p.oldPrice));
-        if (subtitleEl) subtitleEl.innerText = "• Promociones y Ofertas";
-      } else {
-        renderProducts(products.filter(p => p.cat === cat));
-        if (subtitleEl) subtitleEl.innerText = `• Categoría: ${cat}`;
-      }
-      document.getElementById('store-wrapper').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    async function loadProductsFromSupabase() {
-        const grid = document.getElementById('products-grid');
-        grid.innerHTML = "<p style='text-align:center; width:100%; grid-column: 1/-1;'>Cargando productos...</p>";
-
-        const { data, error } = await supabaseClient
-            .from('products')
-            .select('*')
-            .order('id', { ascending: false });
-
-        if (error) {
-            console.error("Error al cargar productos:", error);
-            grid.innerHTML = "<p style='text-align:center; width:100%; grid-column: 1/-1;'>Error al cargar productos.</p>";
-            return;
-        }
-
-        products = data.map(item => ({
-            id: item.id,
-            name: item.name,
-            cat: item.category,
-            price: parseFloat(item.price),
-            oldPrice: item.old_price ? parseFloat(item.old_price) : null,
-            img: item.image,
-            images: item.images || [item.image],
-            desc: item.description,
-            benefits: item.benefits || [],
-            is_24h: item.is_24h || item.is24h || false,
-            bloqueado: item.is_active === false
-        }));
-
-        renderProducts(products);
-    }
-
-    function renderProducts(items) {
-      const grid = document.getElementById('products-grid');
-      const emptyState = document.getElementById('empty-state');
-      grid.innerHTML = "";
-      
-      if (items.length === 0) {
-        emptyState.classList.add('show');
-        return;
-      }
-      emptyState.classList.remove('show');
-      
-      items.forEach(p => {
-        grid.appendChild(createProductCardElement(p));
+        container.appendChild(groupDiv);
       });
     }
 
-    function setupFilters() {
-      const filtersContainer = document.getElementById('filters');
-      
-      filtersContainer.addEventListener('click', (e) => {
-        const targetButton = e.target.closest('.filter-chip, .nav-item:not(.dropdown-trigger)');
-        if (!targetButton) return;
-
-        showCatalogView();
-
-        filtersContainer.querySelectorAll('.filter-chip, .nav-item').forEach(btn => btn.classList.remove('active'));
-        targetButton.classList.add('active');
-
-        const cat = targetButton.getAttribute('data-cat');
-        const subtitleEl = document.getElementById('catalog-subtitle');
-        
-        if (cat === 'todos') {
-          renderProducts(products);
-          if (subtitleEl) subtitleEl.innerText = "• Selección Exclusiva";
-        } else if (cat === 'ofertas') {
-          renderProducts(products.filter(p => p.oldPrice));
-          if (subtitleEl) subtitleEl.innerText = "• Promociones y Ofertas";
-        } else {
-          renderProducts(products.filter(p => p.cat === cat));
-          if (subtitleEl) subtitleEl.innerText = `• Categoría: ${cat}`;
-        }
-
-        document.getElementById('store-wrapper').scrollIntoView({ behavior: 'smooth' });
-        filtersContainer.querySelectorAll('.dropdown-menu-content').forEach(menu => menu.style.display = '');
-      });
-
-      const searchInput = document.getElementById('search');
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          showCatalogView();
-          const val = e.target.value.toLowerCase().trim();
-          const filtered = products.filter(p => 
-            p.name.toLowerCase().includes(val) || 
-            p.cat.toLowerCase().includes(val) ||
-            p.desc.toLowerCase().includes(val)
-          );
-          renderProducts(filtered);
-        });
-      }
-    }
-
-    function updateCartUI() {
-      const countEl = document.getElementById('cart-count');
-      const container = document.getElementById('cart-items-container');
-      const subtotalEl = document.getElementById('cart-subtotal');
-      const shippingEl = document.getElementById('cart-shipping-cost');
-      const totalEl = document.getElementById('cart-total');
-
-      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
-      countEl.innerText = totalItems;
-
-      if (cart.length === 0) {
-        container.innerHTML = `
-          <div style="text-align:center; color:#6b7280; margin-top:4rem;">
-            <i class="ri-shopping-basket-2-line" style="font-size:3rem;"></i>
-            <p style="margin-top:0.5rem;">Tu carrito está vacío</p>
-          </div>
-        `;
-        subtotalEl.innerText = "S/ 0.00";
-        shippingEl.innerText = "S/ 0.00";
-        totalEl.innerText = "S/ 0.00";
-
-        document.getElementById('checkout-form-container').style.display = 'none';
-        document.getElementById('checkout-btn').innerText = "Llenar datos de compra";
-        return;
-      }
-
-      container.innerHTML = "";
-      let subtotal = 0;
-
-      cart.forEach(item => {
-        subtotal += item.price * item.qty;
-        const div = document.createElement('div');
-        div.className = "cart-item";
-        div.innerHTML = `
-          <div class="ci-icon"><img src="${item.img}" alt="${item.name}"></div>
-          <div class="ci-info">
-            <h4 class="ci-name">${item.name} ${item.is_24h ? '<span style="color:#7209b7; font-size:0.7rem; font-weight:700;">[24H]</span>' : ''}</h4>
-            <div class="ci-price">S/ ${item.price.toFixed(2)}</div>
-            <div class="ci-qty">
-              <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
-              <span class="qty-val">${item.qty}</span>
-              <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
-            </div>
-          </div>
-          <button class="ci-remove" onclick="toggleCartAction(${item.id}, null)">Quitar</button>
-        `;
-        container.appendChild(div);
-      });
-
-      const shippingCost = currentDeliveryType === 'domicilio' ? 2 : 0;
-      const totalFinal = subtotal + shippingCost;
-
-      subtotalEl.innerText = `S/ ${subtotal.toFixed(2)}`;
-      shippingEl.innerText = shippingCost > 0 ? `S/ ${shippingCost.toFixed(2)}` : "Gratis";
-      totalEl.innerText = `S/ ${totalFinal.toFixed(2)}`;
-    }
-
-    function changeQty(id, delta) {
-      const item = cart.find(i => i.id === id);
-      if (!item) return;
-      item.qty += delta;
-      if (item.qty <= 0) {
-        toggleCartAction(id, null);
-      } else {
-        updateCartUI();
-      }
-    }
-
+    /* MANEJO CARRITO */
     function toggleCart() {
       document.getElementById('cart-sidebar').classList.toggle('open');
       document.getElementById('overlay').classList.toggle('open');
     }
 
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      toast.innerText = msg;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2500);
+    function updateCartUI() {
+      const countEl = document.getElementById('cart-count');
+      const itemsContainer = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const totalEl = document.getElementById('cart-total');
+
+      const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
+      countEl.innerText = totalItems;
+
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = '<p style="text-align:center; color:var(--text-muted); margin-top:2rem;">Tu carrito está vacío</p>';
+        subtotalEl.innerText = 'S/ 0.00';
+        totalEl.innerText = 'S/ 0.00';
+        return;
+      }
+
+      itemsContainer.innerHTML = '';
+      let subtotal = 0;
+
+      cart.forEach(item => {
+        subtotal += item.price * item.qty;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <div class="ci-icon"><img src="${item.img}" alt="${item.name}"></div>
+          <div class="ci-info">
+            <div class="ci-name">${item.name}</div>
+            <div class="ci-price">S/ ${item.price.toFixed(2)}</div>
+            <div class="ci-qty">
+              <button class="qty-btn" onclick="changeCartQty(${item.id}, -1)">-</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeCartQty(${item.id}, 1)">+</button>
+              <button class="ci-remove" onclick="removeCartItem(${item.id})">Eliminar</button>
+            </div>
+          </div>
+        `;
+        itemsContainer.appendChild(itemDiv);
+      });
+
+      const shippingCost = currentDeliveryType === 'domicilio' ? 2 : 0;
+      subtotalEl.innerText = `S/ ${subtotal.toFixed(2)}`;
+      totalEl.innerText = `S/ ${(subtotal + shippingCost).toFixed(2)}`;
+    }
+
+    function changeCartQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartUI();
+      renderProducts(products);
+      if (activeProductId) renderDetailActionButton(activeProductId);
+    }
+
+    function removeCartItem(id) {
+      cart = cart.filter(i => i.id !== id);
+      updateCartUI();
+      renderProducts(products);
+      if (activeProductId) renderDetailActionButton(activeProductId);
     }
 
     function selectDeliveryOption(type) {
-        currentDeliveryType = type;
-        const btnRecojo = document.getElementById('btn-delivery-recojo');
-        const btnDomicilio = document.getElementById('btn-delivery-domicilio');
-        const blockRecojo = document.getElementById('block-recojo');
-        const blockDomicilio = document.getElementById('block-domicilio');
+      currentDeliveryType = type;
+      const btnRecojo = document.getElementById('btn-delivery-recojo');
+      const btnDomicilio = document.getElementById('btn-delivery-domicilio');
+      const blockRecojo = document.getElementById('block-recojo');
+      const blockDomicilio = document.getElementById('block-domicilio');
+      const shippingCostEl = document.getElementById('cart-shipping-cost');
 
-        if (type === 'recojo') {
-            btnRecojo.classList.add('active');
-            btnDomicilio.classList.remove('active');
-            blockRecojo.style.display = 'block';
-            blockDomicilio.style.display = 'none';
-        } else {
-            btnDomicilio.classList.add('active');
-            btnRecojo.classList.remove('active');
-            blockRecojo.style.display = 'none';
-            blockDomicilio.style.display = 'block';
-
-            setTimeout(() => { initLeafletMap(); }, 200);
-        }
-        updateCartUI();
-    }
-
-    function initLeafletMap() {
-        const mapElement = document.getElementById('delivery-map');
-        if (!mapElement) return;
-
-        if (!leafletMap) {
-            leafletMap = L.map('delivery-map').setView([selectedCoords.lat, selectedCoords.lng], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(leafletMap);
-
-            mapMarker = L.marker([selectedCoords.lat, selectedCoords.lng], { draggable: true }).addTo(leafletMap);
-
-            mapMarker.on('dragend', function (e) {
-                const pos = e.target.getLatLng();
-                selectedCoords = { lat: pos.lat, lng: pos.lng };
-            });
-
-            leafletMap.on('click', function(e) {
-                mapMarker.setLatLng(e.latlng);
-                selectedCoords = { lat: e.latlng.lat, lng: e.latlng.lng };
-            });
-        } else {
-            leafletMap.setView([selectedCoords.lat, selectedCoords.lng], 15);
-            mapMarker.setLatLng([selectedCoords.lat, selectedCoords.lng]);
-        }
+      if (type === 'recojo') {
+        btnRecojo.classList.add('active');
+        btnDomicilio.classList.remove('active');
+        blockRecojo.style.display = 'block';
+        blockDomicilio.style.display = 'none';
+        shippingCostEl.innerText = 'Gratis';
+        shippingCostEl.style.color = '#22c55e';
+      } else {
+        btnDomicilio.classList.add('active');
+        btnRecojo.classList.remove('active');
+        blockDomicilio.style.display = 'block';
+        blockRecojo.style.display = 'none';
+        shippingCostEl.innerText = 'S/ 2.00';
+        shippingCostEl.style.color = '#7209b7';
 
         setTimeout(() => {
-            leafletMap.invalidateSize();
-        }, 200);
+          initDeliveryMap();
+        }, 100);
+      }
+      updateCartUI();
+    }
+
+    function initDeliveryMap() {
+      if (!leafletMap) {
+        leafletMap = L.map('delivery-map').setView([selectedCoords.lat, selectedCoords.lng], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap'
+        }).addTo(leafletMap);
+
+        mapMarker = L.marker([selectedCoords.lat, selectedCoords.lng], { draggable: true }).addTo(leafletMap);
+
+        mapMarker.on('dragend', function (e) {
+          const latlng = mapMarker.getLatLng();
+          selectedCoords = { lat: latlng.lat, lng: latlng.lng };
+        });
+
+        leafletMap.on('click', function (e) {
+          selectedCoords = { lat: e.latlng.lat, lng: e.latlng.lng };
+          mapMarker.setLatLng(e.latlng);
+        });
+      } else {
+        leafletMap.invalidateSize();
+      }
     }
 
     function getCurrentLocation() {
-        if (!navigator.geolocation) {
-            alert("La geolocalización no es soportada por tu navegador.");
-            return;
-        }
-
-        showToast("Obteniendo tu ubicación...");
-
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-
-                selectedCoords = { lat: lat, lng: lng };
-
-                if (!leafletMap) {
-                    initLeafletMap();
-                }
-
-                leafletMap.flyTo([lat, lng], 16, { animate: true, duration: 1.5 });
-                mapMarker.setLatLng([lat, lng]);
-
-                setTimeout(() => {
-                    leafletMap.invalidateSize();
-                }, 300);
-
-                showToast("¡Ubicación detectada correctamente!");
-            },
-            (error) => {
-                console.error("Error al obtener la ubicación:", error);
-                alert("Ocurrió un error al obtener la ubicación.");
-            },
-            {
-                enableHighAccuracy: true,
-                timeout: 10000,
-                maximumAge: 0
-            }
-        );
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          selectedCoords = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          if (leafletMap && mapMarker) {
+            leafletMap.setView([selectedCoords.lat, selectedCoords.lng], 16);
+            mapMarker.setLatLng([selectedCoords.lat, selectedCoords.lng]);
+          }
+        }, () => {
+          alert("No se pudo obtener la ubicación actual.");
+        });
+      } else {
+        alert("Tu navegador no soporta geolocalización.");
+      }
     }
 
+    /* ACCIÓN DE CHECKOUT Y REGISTRO EN SUPABASE */
     async function handleCheckoutAction() {
       if (cart.length === 0) {
         alert("Tu carrito está vacío.");
@@ -2860,82 +2928,31 @@
       formContainer.style.display = 'none';
     }
 
-    function openImageModal(imgUrl) {
+    function calculateTotalAmount() {
+      const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+      const shippingFee = currentDeliveryType === 'domicilio' ? 2 : 0;
+      return subtotal + shippingFee;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function openImageModal(src) {
       const modal = document.getElementById('image-modal');
-      const modalImg = document.getElementById('image-modal-src');
-      if (modal && modalImg) {
-          modalImg.src = imgUrl;
-          modal.classList.add('open');
-      }
+      const img = document.getElementById('image-modal-src');
+      img.src = src;
+      modal.classList.add('open');
     }
 
     function closeImageModal() {
-      const modal = document.getElementById('image-modal');
-      if (modal) {
-          modal.classList.remove('open');
-      }
+      document.getElementById('image-modal').classList.remove('open');
     }
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-          closeImageModal();
-      }
-    });
-
-    window.addEventListener('popstate', (event) => {
-      if (event.state && event.state.view === 'detail' && event.state.productId) {
-          const p = products.find(prod => prod.id === event.state.productId);
-          if (p) {
-          activeProductId = p.id;
-          
-          const imagesList = (p.images && p.images.length > 0) ? p.images : [p.img];
-          const slidesWrapper = document.getElementById('product-slides-wrapper');
-          slidesWrapper.innerHTML = '';
-
-          imagesList.forEach((imgUrl, idx) => {
-              const slideDiv = document.createElement('div');
-              slideDiv.className = `product-carousel-slide ${idx === 0 ? 'active' : ''}`;
-              slideDiv.innerHTML = `<img src="${imgUrl}" alt="${p.name}" style="cursor: zoom-in;" onclick="openImageModal('${imgUrl}')">`;
-              slidesWrapper.appendChild(slideDiv);
-          });
-
-          currentProdSlideIdx = 0;
-
-          document.getElementById('detail-cat').innerText = p.cat;
-          document.getElementById('detail-name').innerText = p.name;
-
-          const priceBlock = document.getElementById('detail-price-block');
-          if (p.oldPrice) {
-              priceBlock.innerHTML = `
-              <div class="detail-price-row">
-                  <span class="price-label-regular">Precio regular:</span>
-                  <span class="detail-price-old">S/ ${p.oldPrice.toFixed(2)}</span>
-              </div>
-              <div class="detail-price-row">
-                  <span class="price-label-oferta">Precio oferta:</span>
-                  <span class="detail-price-sale">S/ ${p.price.toFixed(2)}</span>
-              </div>
-              `;
-          } else {
-              priceBlock.innerHTML = `
-              <div class="detail-price-row">
-                  <span class="price-label-regular">Precio regular:</span>
-                  <span class="detail-price-main">S/ ${p.price.toFixed(2)}</span>
-              </div>
-              `;
-          }
-
-          renderDetailActionButton(p.id);
-          renderDetailSuggestionsAndOffers(p);
-
-          document.getElementById('catalog-full-view').style.display = 'none';
-          document.getElementById('product-detail-view').style.display = 'block';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-      } else {
-          showCatalogView(true);
-      }
-    });
   </script>
 </body>
 </html>
