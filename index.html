@@ -20,17 +20,25 @@
        PALETA DE COLORES Y VARIABLES
        ========================================== */
     :root {
-      --bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #f6f0ff 100%);
-      --surface: #ffffff;
-      --primary-celeste: #0e35d1;
-      --primary-morado: #7209b7;
-      --primary-mix: linear-gradient(135deg, #00b4d8 0%, #7209b7 100%);
-      --accent-glow: rgba(114, 9, 183, 0.15);
-      --text-main: #1e1b4b; 
-      --text-muted: #6b7280;
-      --border: rgba(114, 9, 183, 0.08);
-      --radius: 16px;
-      --transition: all 0.3s ease;
+    /* Fondo general fresco */
+    --bg-gradient: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+    --surface: #ffffff;
+    
+    /* Tonos clínicos y frescos */
+    --primary-celeste: #0d9488;
+    --primary-morado: #0284c7;
+    --primary-mix: linear-gradient(135deg, #0d9488 0%, #0284c7 100%);
+    
+    /* Acento de contraste para botones o destacados */
+    --accent-cta: #f97316;
+    --accent-glow: rgba(13, 148, 136, 0.15);
+    
+    /* Tipografía y estructura */
+    --text-main: #0f172a; 
+    --text-muted: #64748b;
+    --border: rgba(13, 148, 136, 0.12);
+    --radius: 16px;
+    --transition: all 0.3s ease;
     }
 
     * {
@@ -204,7 +212,7 @@
       box-shadow: 0 4px 12px rgba(114, 9, 183, 0.15);
     }
 
-    .btn-oferta-top { color: #ef4444; font-weight: 600; }
+    .btn-oferta-top { color: #60026a; font-weight: 600; }
 
     /* DROPDOWNS DESKTOP */
     .nav-dropdown { position: relative; display: inline-block; }
@@ -396,17 +404,17 @@
       color: white;
     }
 
-    .carousel-tag {
-      background: #ef4444;
-      color: white;
-      padding: 6px 18px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      width: fit-content;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+   .carousel-tag {
+        background: #0d9488; /* CAMBIADO: Antes era #ef4444 */
+        color: #f7fafc;
+        padding: 6px 18px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        width: fit-content;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .carousel-title {
@@ -614,7 +622,7 @@
     }
 
     .promo-card-badge {
-      background: #ef4444;
+      background: #60026a;
       font-size: 0.8rem;
       font-weight: 800;
       padding: 4px 12px;
@@ -869,7 +877,7 @@
 
     .catalog-price-block { display: flex; flex-direction: column; }
     .price-old-crossed { font-size: 0.75rem; color: #9ca3af; text-decoration: line-through; }
-    .price-sale { font-size: 1.15rem; font-weight: 700; color: #ef4444; }
+    .price-sale { font-size: 1.15rem; font-weight: 700; color: #60026a; }
 
     .add-btn {
       padding: 0.5rem 0.95rem; 
@@ -1236,7 +1244,7 @@
 
     .detail-price-main { font-size: 1.7rem; font-weight: 800; color: var(--primary-morado); }
     .detail-price-sale { font-size: 1.8rem; font-weight: 800; color: #ef4444; }
-    .detail-price-old { font-size: 1.05rem; color: #9ca3af; text-decoration: line-through; }
+    .detail-price-old { font-size: 1.05rem; color: #60026a; text-decoration: line-through; }
 
     .detail-actions-row {
       display: flex;
@@ -1685,7 +1693,7 @@
         </div>
 
         <div class="promo-card" onclick="filterByPromo('Cuidado de la piel')">
-          <img src="cuidado de la piel.jpg" alt="cuidado de la piel">
+          <img src="aa_bb.jpg" alt="cuidado de la piel">
           <div class="promo-card-content">
             <span class="promo-card-badge">Hasta 20% en Cuidado para la Piel</span>
             <div class="promo-card-title">Promociones Exclusivas</div>
@@ -1694,7 +1702,7 @@
         </div>
 
         <div class="promo-card" onclick="filterByPromo('Dermocosmética')">
-          <img src="mcep.jpg" alt="Promo 3">
+          <img src="dent.jpg" alt="Promo 3">
           <div class="promo-card-content">
             <span class="promo-card-badge">¡Cuida tu sonrisa!</span>
             <div class="promo-card-title">Línea de cuidado bucal</div>
