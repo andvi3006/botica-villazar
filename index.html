@@ -1914,9 +1914,11 @@
                 <i class="ri-truck-line"></i> Métodos de entrega:
               </div>
               <div class="static-shipping-info">
+
                 <span class="static-badge-btn static-badge-envio">
                   <i class="ri-map-pin-user-line"></i> Despacho a domicilio (S/ 2)
                 </span>
+
                 <span class="static-badge-btn static-badge-recojo">
                   <i class="ri-store-2-line"></i> Recojo en tienda gratis
                 </span>
@@ -1975,7 +1977,7 @@
         <span id="cart-subtotal">S/ 0.00</span>
       </div>
       <div class="summary-row">
-        <span>Envío</span>
+        <span>Tarifa</span>
         <span id="cart-shipping-cost" style="color:#22c55e; font-weight:600;">Gratis</span>
       </div>
       <div class="summary-row total">
@@ -1992,9 +1994,12 @@
           <button type="button" class="delivery-btn active" id="btn-delivery-recojo" onclick="selectDeliveryOption('recojo')">
             <i class="ri-store-2-line"></i> Recojo en Tienda
           </button>
+
+          <!--
           <button type="button" class="delivery-btn" id="btn-delivery-domicilio" onclick="selectDeliveryOption('domicilio')">
             <i class="ri-truck-line"></i> Envío a Domicilio (S/ 2)
           </button>
+            -->
         </div>
         
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -2022,7 +2027,7 @@
           <div id="block-recojo">
             <div style="background: #ffffff; border: 1px dashed #7209b7; padding: 10px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 10px; color: #1e1b4b;">
               <strong>📍 Dirección del Local:</strong><br>
-              Av. Javier Prado Este 2450, San Borja, Lima.
+              Calle Las Palmeras D 02A - El Paraíso de Jicamarca
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
               <div>
@@ -2868,33 +2873,37 @@
     }
 
     function selectDeliveryOption(type) {
-      currentDeliveryType = type;
-      const btnRecojo = document.getElementById('btn-delivery-recojo');
-      const btnDomicilio = document.getElementById('btn-delivery-domicilio');
-      const blockRecojo = document.getElementById('block-recojo');
-      const blockDomicilio = document.getElementById('block-domicilio');
-      const shippingCostEl = document.getElementById('cart-shipping-cost');
+        currentDeliveryType = type;
+        const btnRecojo = document.getElementById('btn-delivery-recojo');
+        const btnDomicilio = document.getElementById('btn-delivery-domicilio');
+        const blockRecojo = document.getElementById('block-recojo');
+        const blockDomicilio = document.getElementById('block-domicilio');
+        const shippingCostEl = document.getElementById('cart-shipping-cost');
 
-      if (type === 'recojo') {
-        btnRecojo.classList.add('active');
-        btnDomicilio.classList.remove('active');
-        blockRecojo.style.display = 'block';
-        blockDomicilio.style.display = 'none';
-        shippingCostEl.innerText = 'Gratis';
-        shippingCostEl.style.color = '#22c55e';
-      } else {
-        btnDomicilio.classList.add('active');
-        btnRecojo.classList.remove('active');
-        blockDomicilio.style.display = 'block';
-        blockRecojo.style.display = 'none';
-        shippingCostEl.innerText = 'S/ 2.00';
-        shippingCostEl.style.color = '#7209b7';
+        if (type === 'recojo') {
+            if (btnRecojo) btnRecojo.classList.add('active');
+            if (btnDomicilio) btnDomicilio.classList.remove('active');
+            if (blockRecojo) blockRecojo.style.display = 'block';
+            if (blockDomicilio) blockDomicilio.style.display = 'none';
+            if (shippingCostEl) {
+            shippingCostEl.innerText = 'Gratis';
+            shippingCostEl.style.color = '#22c55e';
+            }
+        } else {
+            if (btnDomicilio) btnDomicilio.classList.add('active');
+            if (btnRecojo) btnRecojo.classList.remove('active');
+            if (blockDomicilio) blockDomicilio.style.display = 'block';
+            if (blockRecojo) blockRecojo.style.display = 'none';
+            if (shippingCostEl) {
+            shippingCostEl.innerText = 'S/ 2.00';
+            shippingCostEl.style.color = '#7209b7';
+            }
 
-        setTimeout(() => {
-          initDeliveryMap();
-        }, 100);
-      }
-      updateCartUI();
+            setTimeout(() => {
+            initDeliveryMap();
+            }, 100);
+        }
+        updateCartUI();
     }
 
     function initDeliveryMap() {
@@ -2940,99 +2949,131 @@
     }
 
     /* ACCIÓN DE CHECKOUT Y REGISTRO EN SUPABASE */
+    /* ACCIÓN DE CHECKOUT Y REGISTRO EN SUPABASE CON REDIRECCIÓN A WHATSAPP */
     async function handleCheckoutAction() {
-      if (cart.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-      }
-
-      const formContainer = document.getElementById('checkout-form-container');
-      const checkoutBtn = document.getElementById('checkout-btn');
-
-      if (formContainer.style.display === 'none' || formContainer.style.display === '') {
-        formContainer.style.display = 'block';
-        checkoutBtn.innerText = "Enviar Pedido";
-        formContainer.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      const name = document.getElementById('cust-name').value.trim();
-      const lastname = document.getElementById('cust-lastname').value.trim();
-      const phone = document.getElementById('cust-phone').value.trim();
-      const email = document.getElementById('cust-email').value.trim();
-
-      if (!name || !lastname || !phone || !email) {
-        alert("Por favor completa los campos requeridos: Nombre, Apellidos, Teléfono y Correo.");
-        return;
-      }
-
-      const generatedCode = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
-      const subtotalCalculated = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-      const shippingCost = currentDeliveryType === 'domicilio' ? 2 : 0;
-      const totalCalculated = subtotalCalculated + shippingCost;
-
-      const tieneProductos24h = cart.some(item => item.is_24h);
-      let finalDeliveryType = currentDeliveryType;
-      if (tieneProductos24h) {
-        finalDeliveryType = '24h';
-      }
-
-      let orderPayload = {
-        order_code: generatedCode,
-        customer_name: name,
-        customer_lastname: lastname,
-        customer_phone: phone,
-        customer_email: email,
-        delivery_type: finalDeliveryType,
-        cart_items: cart,
-        total: totalCalculated,
-        status: 'Pendiente'
-      };
-
-      if (currentDeliveryType === 'recojo') {
-        const date = document.getElementById('cust-pickup-date').value;
-        const time = document.getElementById('cust-pickup-time').value;
-        if (!date || !time) {
-          alert("Por favor selecciona la fecha y el horario de recojo.");
-          return;
+        if (cart.length === 0) {
+            alert("Tu carrito está vacío.");
+            return;
         }
-        orderPayload.pickup_date = date;
-        orderPayload.pickup_time = time;
-      } else {
-        const address = document.getElementById('cust-address').value.trim();
-        const ref = document.getElementById('cust-address-ref').value.trim();
-        if (!address || !ref) {
-          alert("Por favor completa la Dirección de Entrega y Referencia.");
-          return;
+
+        const formContainer = document.getElementById('checkout-form-container');
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+            formContainer.style.display = 'block';
+            checkoutBtn.innerText = "Enviar Pedido";
+            formContainer.scrollIntoView({ behavior: 'smooth' });
+            return;
         }
-        orderPayload.address = address;
-        orderPayload.address_reference = ref;
-        orderPayload.latitude = selectedCoords.lat;
-        orderPayload.longitude = selectedCoords.lng;
-      }
 
-      checkoutBtn.disabled = true;
-      checkoutBtn.innerText = "Procesando pedido...";
+        const name = document.getElementById('cust-name').value.trim();
+        const lastname = document.getElementById('cust-lastname').value.trim();
+        const phone = document.getElementById('cust-phone').value.trim();
+        const email = document.getElementById('cust-email').value.trim();
 
-      const { data, error } = await supabaseClient
-        .from('orders')
-        .insert([orderPayload]);
+        if (!name || !lastname || !phone || !email) {
+            alert("Por favor completa los campos requeridos: Nombre, Apellidos, Teléfono y Correo.");
+            return;
+        }
 
-      if (error) {
-        console.error("Error al registrar pedido:", error);
-        alert("Ocurrió un error al procesar el pedido. Por favor intenta nuevamente.");
+        const generatedCode = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+        const subtotalCalculated = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+        const shippingCost = currentDeliveryType === 'domicilio' ? 2 : 0;
+        const totalCalculated = subtotalCalculated + shippingCost;
+
+        const tieneProductos24h = cart.some(item => item.is_24h);
+        let finalDeliveryType = currentDeliveryType;
+        if (tieneProductos24h) {
+            finalDeliveryType = '24h';
+        }
+
+        let orderPayload = {
+            order_code: generatedCode,
+            customer_name: name,
+            customer_lastname: lastname,
+            customer_phone: phone,
+            customer_email: email,
+            delivery_type: finalDeliveryType,
+            cart_items: cart,
+            total: totalCalculated,
+            status: 'Pendiente'
+        };
+
+        let deliveryDetailsText = "";
+
+        if (currentDeliveryType === 'recojo') {
+            const date = document.getElementById('cust-pickup-date').value;
+            const time = document.getElementById('cust-pickup-time').value;
+            if (!date || !time) {
+            alert("Por favor selecciona la fecha y el horario de recojo.");
+            return;
+            }
+            orderPayload.pickup_date = date;
+            orderPayload.pickup_time = time;
+            deliveryDetailsText = `🏪 *Modalidad:* Recojo en Tienda\n📅 *Fecha:* ${date}\n⏰ *Horario:* ${time}`;
+        } else {
+            const address = document.getElementById('cust-address').value.trim();
+            const ref = document.getElementById('cust-address-ref').value.trim();
+            if (!address || !ref) {
+            alert("Por favor completa la Dirección de Entrega y Referencia.");
+            return;
+            }
+            orderPayload.address = address;
+            orderPayload.address_reference = ref;
+            orderPayload.latitude = selectedCoords.lat;
+            orderPayload.longitude = selectedCoords.lng;
+            
+            deliveryDetailsText = `🚚 *Modalidad:* Envío a Domicilio\n🏠 *Dirección:* ${address}\n📍 *Referencia:* ${ref}\n🗺️ *Ubicación Mapa:* https://maps.google.com/?q=${selectedCoords.lat},${selectedCoords.lng}`;
+        }
+
+        checkoutBtn.disabled = true;
+        checkoutBtn.innerText = "Procesando pedido...";
+
+        // 1. Guardar el pedido en Supabase
+        const { data, error } = await supabaseClient
+            .from('orders')
+            .insert([orderPayload]);
+
+        if (error) {
+            console.error("Error al registrar pedido:", error);
+            alert("Ocurrió un error al procesar el pedido. Por favor intenta nuevamente.");
+            checkoutBtn.disabled = false;
+            checkoutBtn.innerText = "Enviar Pedido";
+            return;
+        }
+
+        // 2. Construir el mensaje formateado para WhatsApp (Estrategia de Ventas/Marketing)
+        let itemsListText = cart.map((item, idx) => {
+            return `${idx + 1}. *${item.name}*\n   ↳ Cantidad: ${item.qty} x S/ ${item.price.toFixed(2)} = S/ ${(item.price * item.qty).toFixed(2)}`;
+        }).join('\n');
+
+        let whatsappMessage = `¡Hola Botica Villazar! 👋\nMe gustaría adquirir los siguientes productos:\n\n` +
+            `📌 *Código de Pedido:* ${generatedCode}\n\n` +
+            `🛒 *DETALLE DEL PEDIDO:*\n${itemsListText}\n\n` +
+            `💵 *Subtotal:* S/ ${subtotalCalculated.toFixed(2)}\n` +
+            `🚚 *Costo de envío:* S/ ${shippingCost.toFixed(2)}\n` +
+            `💰 *TOTAL A PAGAR:* S/ ${totalCalculated.toFixed(2)}\n\n` +
+            `👤 *DATOS DEL CLIENTE:*\n` +
+            `• *Nombre:* ${name} ${lastname}\n` +
+            `• *Teléfono:* ${phone}\n` +
+            `• *Correo:* ${email}\n\n` +
+            `${deliveryDetailsText}\n\n` +
+            `Quedo a la espera de sus indicaciones para concretar el pago y la entrega. ¡Muchas gracias! 🙌`;
+
+        // 3. Reemplazar '51929300632' por el número corporativo de WhatsApp
+        const phoneBotica = "51929300632"; 
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneBotica}&text=${encodeURIComponent(whatsappMessage)}`;
+
+        // 4. Limpieza del carrito y apertura de la ventana de WhatsApp
+        cart = [];
+        updateCartUI();
+        toggleCart();
         checkoutBtn.disabled = false;
-        checkoutBtn.innerText = "Enviar Pedido";
-        return;
-      }
+        checkoutBtn.innerText = "Llenar datos de compra";
+        formContainer.style.display = 'none';
 
-      alert("¡Gracias por tu compra! Tu pedido fue registrado exitosamente. Código: " + generatedCode);
-      cart = [];
-      updateCartUI();
-      toggleCart();
-      checkoutBtn.disabled = false;
-      checkoutBtn.innerText = "Llenar datos de compra";
-      formContainer.style.display = 'none';
+        // Abrir WhatsApp en una pestaña nueva
+        window.open(whatsappUrl, '_blank');
     }
 
     function calculateTotalAmount() {
